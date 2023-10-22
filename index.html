@@ -76,6 +76,7 @@
 
     const createVideo = (id, width, height) => {
         videos = document.createElement("video");
+        videos.setAttribute("playsinline", "");
         videos.id = id;
         videos.width = 200;
         videos.height = 200;
