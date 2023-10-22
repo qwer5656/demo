@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://superal.github.io/canvas2image/canvas2image.js"></script>
 </head>
 
 <body>
-    <div class="wrap">
+    <div class="wrap" id="go">
         <div id="app"></div>
         <div class="container">
             <img class="imgfn" src="./img/動物角色_VR_企鵝.png" alt="">
@@ -21,6 +23,14 @@
             <img id="capture" class="imgbt" src="./img/capture.png" alt="" onclick="startcapture()" style="display:none">
         </div>
     </div>
+
+    <div id="downloadwrap">
+        <img id="downloadimg" class="imgbt" src="./img/downloading.png" onclick="download() " class="mid">
+    </div>
+    <div id="textfn">
+    </div>
+
+
 </body>
 <style>
     .imgfn {
@@ -58,6 +68,24 @@
         height: 70vh;
         display: flex;
         align-items: flex-end;
+    }
+
+    #textfn {
+        font-size: 7rem;
+        top: 50%;
+        position: fixed;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #060681;
+    }
+
+    #downloadimg {
+        margin: 0 auto;
+        display: none;
+    }
+
+    #save {
+        height: 80vh !important;
     }
 </style>
 <script>
@@ -122,7 +150,7 @@
                 getFrameFromVideo(video, canvas);
                 app.appendChild(video);
                 app.appendChild(canvas);
-                console.log("init");
+                console.log("init ");
             };
 
             document.getElementById("app").onload = init();
@@ -132,7 +160,40 @@
         document.querySelector("#capture").style.display = "block";
     }
     function startcapture() {
+        document.querySelector("#capture").style.display = "none";
+        let i = 3;
 
+        let dp = function () {
+            document.querySelector("#textfn").innerText = " " + i;
+            setTimeout(function () {
+                i -= 1;
+                if (i != 0) {
+
+                    dp();
+                }
+                else {
+                    html2canvas(document.querySelector("#go")).then(canvas => {
+                        canvas.id = "save";
+                        document.querySelector("#downloadwrap").prepend(canvas);
+
+                        document.querySelector("#downloadimg").style.display = "block";
+                        console.log(canvas);
+                    });
+                    document.querySelector("#go").style.display = "none";
+                    document.querySelector("#textfn").style.display = "none";
+
+
+                }
+            }, 1000);
+        }
+        dp();
+
+
+    }
+
+    function download() {
+        let image = document.querySelector("#save");
+        Canvas2Image.saveAsPNG(image);
     }
 </script>
 
