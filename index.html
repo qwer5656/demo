@@ -76,7 +76,7 @@
         video.width = width;
         video.height = height;
         video.autoplay = true;
-        video.controls = true;
+        //  video.controls = true;
         return video;
     };
 
@@ -93,7 +93,7 @@
         const canvas = createCanvas("canvas", 480, 360);
         const app = document.getElementById("app");
         getCameraStream(video);
-        getFrameFromVideo(video, canvas);
+        // getFrameFromVideo(video, canvas);
         app.appendChild(video);
         app.appendChild(canvas);
         console.log("init");
