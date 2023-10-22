@@ -41,9 +41,7 @@
         justify-content: center;
     }
 
-    video {
-        display: none;
-    }
+    video {}
 </style>
 <script>
     let videos;
@@ -82,7 +80,7 @@
         videos.height = 200;
         // video.autoplay = true;
 
-        //  video.controls = true;
+        videos.controls = false;
         return videos;
     };
 
