@@ -47,12 +47,32 @@
         display: flex;
         justify-content: center;
     }
+
+    .videostream {
+        width: 200px;
+        height: 200px;
+    }
+
+    video::-webkit-media-controls,
+    video::-moz-media-controls,
+    video::-webkit-media-controls-enclosure {
+        display: none !important;
+    }
+
+    video::-webkit-media-controls-panel,
+    video::-webkit-media-controls-panel-container,
+    video::-webkit-media-controls-start-playback-button {
+        display: none !important;
+        -webkit-appearance: none;
+    }
 </style>
 <script>
 
     (function () {
 
         const video = document.querySelector('#basic video');
+
+        video.controls = false;
         const audio = document.querySelector('#basic audio');
 
         const captureVideoButton = document.querySelector('#basic .capture-button');
