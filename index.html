@@ -31,7 +31,7 @@
         height: 100vh;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+
         flex-direction: column;
 
     }
@@ -73,8 +73,8 @@
     const createVideo = (id, width, height) => {
         const video = document.createElement("video");
         video.id = id;
-        video.width = width;
-        video.height = height;
+        video.width = 200;
+        video.height = 200;
         video.autoplay = true;
         //  video.controls = true;
         return video;
@@ -90,12 +90,12 @@
 
     const init = () => {
         const video = createVideo("vid", 480, 360);
-        const canvas = createCanvas("canvas", 480, 360);
+        const canvas = createCanvas("canvas", 200, 200);
         const app = document.getElementById("app");
         getCameraStream(video);
         // getFrameFromVideo(video, canvas);
         app.appendChild(video);
-        app.appendChild(canvas);
+        // app.appendChild(canvas);
         console.log("init");
     };
 
