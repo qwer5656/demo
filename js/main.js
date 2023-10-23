@@ -6,6 +6,24 @@
     let Horizontalh = 250;
     let Horizontalw = 600;
     let videos = null;
+
+
+    function changemode(){
+
+        const constraints = {
+            audio: false,
+            video: {
+                facingMode: "environment"
+            }
+        };
+
+        navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(function success(stream) {
+            videos.srcObject = stream;
+            videos.play();
+        });
+    }
     function test() {
 
         if (videos == null) {
@@ -113,7 +131,7 @@
     window.onresize = function () {
         let h = document.documentElement.clientHeight;
         let w = document.documentElement.clientWidth;
-        if (document.documentElement.clientWidth  > 600) {
+       
             if (document.querySelector("#canvas") != null) {
                 document.querySelector("#canvas").setAttribute("width", w);
                 document.querySelector("#vid").setAttribute("width", w);
@@ -122,15 +140,6 @@
                 document.querySelector("#vid").setAttribute("height", h);
             }
 
-        } else {
-            if (document.querySelector("#canvas") != null) {
-                document.querySelector("#canvas").setAttribute("width", w);
-                document.querySelector("#vid").setAttribute("width", w);
-                document.querySelector("#canvas").setAttribute("height", h);
-                document.querySelector("#vid").setAttribute("height", h);
-            }
-
-        }
 
 
 
@@ -154,3 +163,6 @@
 
         
     }
+
+
+    
