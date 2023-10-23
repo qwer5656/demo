@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -47,7 +47,7 @@
         transition: transform 0.5s;
 
         width: 33%;
-        height: 130px;
+        height: 100px;
     }
 
 
@@ -57,7 +57,7 @@
 
     .imgfns {
         width: 33%;
-        height: 130px;
+        height: 100px;
         transition: transform 0.5s;
     }
 
@@ -76,7 +76,7 @@
 
     .wrap {
         width: 100%;
-      
+
         display: flex;
         align-items: center;
 
@@ -139,9 +139,15 @@
     .mainwrap {
         position: relative;
     }
-   #downloadwrap{
-    flex-direction: column;
-   }
+
+    #downloadwrap {
+        flex-direction: column;
+    }
+
+    html,
+    body {
+        touch-action: manipulation;
+    }
 
     @keyframes example {
         from {
@@ -157,7 +163,7 @@
         .imgfn {
 
             width: 80px;
-            height: 114px;
+            height: 100px;
         }
 
         .btwrap {
@@ -172,7 +178,7 @@
         .imgfns {
 
             width: 92px;
-            height: 114px;
+            height: 100px;
         }
 
         #opencam {
@@ -203,7 +209,7 @@
     let straightw = 250;
 
     let Horizontalh = 250;
-    let Horizontalw = 400;
+    let Horizontalw = 600;
     let videos = null;
     function test() {
 
@@ -315,25 +321,25 @@
         Canvas2Image.saveAsPNG(image);
     }
     window.onresize = function () {
+        alert("1");
+        if (window.screen.availWidth > 600 || window.screen.width > 600) {
+            if (document.querySelector("#canvas") != null) {
+                document.querySelector("#canvas").setAttribute("width", Horizontalw);
+                document.querySelector("#vid").setAttribute("width", Horizontalw);
 
-        if (window.screen.availWidth > 600||window.screen.width>600) {
-            if(document.querySelector("#canvas")!=null){
-            document.querySelector("#canvas").setAttribute("width", Horizontalw);
-            document.querySelector("#vid").setAttribute("width", Horizontalw);
-
-            document.querySelector("#canvas").setAttribute("height", Horizontalh);
-            document.querySelector("#vid").setAttribute("height", Horizontalh);
+                document.querySelector("#canvas").setAttribute("height", Horizontalh);
+                document.querySelector("#vid").setAttribute("height", Horizontalh);
             }
 
         } else {
-            if(document.querySelector("#canvas")!=null){
-            document.querySelector("#canvas").setAttribute("width", straightw);
-            document.querySelector("#vid").setAttribute("width", straightw);
+            if (document.querySelector("#canvas") != null) {
+                document.querySelector("#canvas").setAttribute("width", straightw);
+                document.querySelector("#vid").setAttribute("width", straightw);
             }
 
         }
 
-      
+
 
     }
     window.onload = function () {
