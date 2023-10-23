@@ -6,27 +6,45 @@
 .imgfn {
 
     transition: transform 0.5s;
-
-    width: 33%;
-    height: 100px;
 }
 
 
-.adddown {
+.addpenguindown {
     transform: translateY(10px);
 }
 
-.imgfns {
-    width: 33%;
+.addturtledown {
+    transform: translateY(5px);
+}
+.addimgfnsdown {
+    transform: translateY(15px);
+}
+
+.penguin {
+    width: 75px;
     height: 100px;
-    transition: transform 0.5s;
+    
+}
+
+.turtle {
+    width: 75px;
+    height: 100px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.imgfns {
+    width: 100px;
+    height: 81px;
+ 
+    
 }
 
 .btwrap {
-
-    width: 100%;
-    text-align: center;
-    padding: 5px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
 }
 
 .imgbt {
@@ -61,10 +79,10 @@ video {
 }
 
 #app {
-    height: 50vh;
-    padding-top: 80px;
-    display: flex;
-    justify-content: center;
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
 
 #textfn {
@@ -79,6 +97,7 @@ video {
     left: 0;
     justify-content: center;
     align-items: center;
+
 }
 
 #downloadimg {
@@ -108,43 +127,38 @@ video {
 html,
 body {
     touch-action: manipulation;
+    padding: 0;
+    margin: 0;
+}
+
+.imgcontent {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    width: 300px;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:31px;
 }
 
 @media screen and (min-width: 600px) {
-    .imgfn {
+   
 
-        width: 80px;
-        height: 100px;
-    }
 
     .btwrap {
-        width: 100%;
-        text-align: right;
-        position: absolute;
-        top: 50%;
+        position: fixed;
+        right: 20px;
         transform: translateY(-50%);
-        right: 5px;
+        top: 50%;
+        left: auto;
+        bottom: auto;
     }
 
-    .imgfns {
-
-        width: 92px;
-        height: 100px;
+    .imgcontent{
+        bottom: 20px;
     }
-
-    #opencam {
-        transform: rotate(-90deg);
-    }
-
-    #app {
-        padding-top: 10px;
-        height: 60vh;
-    }
-
-    .wrap {
-        height: 95vh;
-    }
-
     #downloadwrap {
         justify-content: center;
         align-items: center;

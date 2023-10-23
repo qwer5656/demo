@@ -55,12 +55,9 @@
             };
 
             const init = () => {
-                let h = straighth;
-                let w = straightw;
-                if (document.documentElement.clientWidth  > 600) {
-                    h = Horizontalh;
-                    w = Horizontalw;
-                }
+                let h = document.documentElement.clientHeight;
+                let w = document.documentElement.clientWidth;
+               
                 const video = createVideo("vid", w, h);
                 const canvas = createCanvas("canvas", w, h);
                 const app = document.getElementById("app");
@@ -114,19 +111,23 @@
         Canvas2Image.saveAsPNG(image);
     }
     window.onresize = function () {
+        let h = document.documentElement.clientHeight;
+        let w = document.documentElement.clientWidth;
         if (document.documentElement.clientWidth  > 600) {
             if (document.querySelector("#canvas") != null) {
-                document.querySelector("#canvas").setAttribute("width", Horizontalw);
-                document.querySelector("#vid").setAttribute("width", Horizontalw);
+                document.querySelector("#canvas").setAttribute("width", w);
+                document.querySelector("#vid").setAttribute("width", w);
 
-                document.querySelector("#canvas").setAttribute("height", Horizontalh);
-                document.querySelector("#vid").setAttribute("height", Horizontalh);
+                document.querySelector("#canvas").setAttribute("height", h);
+                document.querySelector("#vid").setAttribute("height", h);
             }
 
         } else {
             if (document.querySelector("#canvas") != null) {
-                document.querySelector("#canvas").setAttribute("width", straightw);
-                document.querySelector("#vid").setAttribute("width", straightw);
+                document.querySelector("#canvas").setAttribute("width", w);
+                document.querySelector("#vid").setAttribute("width", w);
+                document.querySelector("#canvas").setAttribute("height", h);
+                document.querySelector("#vid").setAttribute("height", h);
             }
 
         }
@@ -139,7 +140,17 @@
 
     
     window.onload = function () {
-        document.querySelectorAll(".imgtrans").forEach(e => {
-            e.classList.add("adddown");
+        document.querySelectorAll(".penguin").forEach(e => {
+            e.classList.add("addpenguindown");
         })
+
+        document.querySelectorAll(".turtle").forEach(e => {
+            e.classList.add("addturtledown");
+        })
+
+        document.querySelectorAll(".imgfns").forEach(e => {
+            e.classList.add("addimgfnsdown");
+        })
+
+        
     }
