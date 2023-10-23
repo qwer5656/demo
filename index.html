@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -295,8 +295,6 @@
                     document.querySelector("#go").style.display = "none";
                     document.querySelector("#textfn").style.display = "none";
                     document.querySelector("#downloadwrap").style.display = "flex";
-
-
                 }
             }, 1000);
         }
@@ -310,9 +308,7 @@
         Canvas2Image.saveAsPNG(image);
     }
     window.onresize = function () {
-        alert(window.screen.availWidth);
-        alert(document.documentElement.clientWidth );
-        if (window.screen.availWidth > 590 || document.documentElement.clientWidth  > 590) {
+        if (document.documentElement.clientWidth  > 600) {
             if (document.querySelector("#canvas") != null) {
                 document.querySelector("#canvas").setAttribute("width", Horizontalw);
                 document.querySelector("#vid").setAttribute("width", Horizontalw);
