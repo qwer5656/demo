@@ -23,6 +23,8 @@
     <script>
 
         let videos = null;
+        let pos = 40;
+        let test = 40;
         window.onload = function () {
 
 
@@ -48,7 +50,27 @@
 
                     var imgObject = new Image();
                     imgObject.src = "./img/動物角色_VR_企鵝.png";
-                    ctx.drawImage(imgObject, document.documentElement.clientWidth / 2 - 50, document.documentElement.clientHeight - 100, 100, 80);
+                    if (pos > 0) {
+                        pos -= 1;
+                    }
+
+                    if (test > -20) {
+                        test -= 1;
+                    }
+                    ctx.drawImage(imgObject, document.documentElement.clientWidth / 2 - 150, document.documentElement.clientHeight - 100 - pos, 75, 100);
+
+                    var imgObject = new Image();
+                    imgObject.src = "./img/動物角色_VR_烏龜.png";
+                    ctx.drawImage(imgObject, document.documentElement.clientWidth / 2 - 50, document.documentElement.clientHeight - 100 - pos, 75, 100);
+
+
+                    var imgObject = new Image();
+                    imgObject.src = "./img/動物角色_VR_鯨魚.png";
+                    ctx.drawImage(imgObject, document.documentElement.clientWidth / 2 + 50, document.documentElement.clientHeight - 100 - test, 100, 81);
+
+
+
+                  
                     requestAnimationFrame(() => getFrameFromVideo(video, canvas));
                 };
 
