@@ -132,7 +132,7 @@ body {
 }
 
 .imgcontent {
-    position: absolute;
+    position: fixed;
     bottom: 80px;
     left: 50%;
     width: 300px;
