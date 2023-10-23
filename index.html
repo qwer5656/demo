@@ -321,8 +321,9 @@
         Canvas2Image.saveAsPNG(image);
     }
     window.onresize = function () {
-        alert("1");
-        if (window.screen.availWidth > 600 || window.screen.width > 600) {
+        alert(window.screen.availWidth);
+        alert(window.screen.width);
+        if (window.screen.availWidth > 590 || window.screen.width > 590) {
             if (document.querySelector("#canvas") != null) {
                 document.querySelector("#canvas").setAttribute("width", Horizontalw);
                 document.querySelector("#vid").setAttribute("width", Horizontalw);
@@ -342,6 +343,10 @@
 
 
     }
+
+
+
+    
     window.onload = function () {
         document.querySelectorAll(".imgtrans").forEach(e => {
             e.classList.add("adddown");
