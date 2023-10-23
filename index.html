@@ -311,8 +311,8 @@
     }
     window.onresize = function () {
         alert(window.screen.availWidth);
-        alert(window.screen.width);
-        if (window.screen.availWidth > 590 || window.screen.width > 590) {
+        alert(document.documentElement.clientWidth );
+        if (window.screen.availWidth > 590 || document.documentElement.clientWidth  > 590) {
             if (document.querySelector("#canvas") != null) {
                 document.querySelector("#canvas").setAttribute("width", Horizontalw);
                 document.querySelector("#vid").setAttribute("width", Horizontalw);
