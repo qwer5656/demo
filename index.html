@@ -28,7 +28,7 @@
                 style="display:none">
         </div>
     </div>
-    <div id="downloadwrap">
+    <div id="downloadwrap" style="display: none;">
         <img id="downloadimg" class="imgbt" src="./img/downloading.png" onclick="download() " class="mid">
     </div>
     <div id="textfn">
@@ -76,7 +76,7 @@
 
     .wrap {
         width: 100%;
-        height: 85vh;
+      
         display: flex;
         align-items: center;
 
@@ -100,7 +100,7 @@
     }
 
     #app {
-        height: 70vh;
+        height: 50vh;
         padding-top: 80px;
         display: flex;
         justify-content: center;
@@ -139,7 +139,9 @@
     .mainwrap {
         position: relative;
     }
-
+   #downloadwrap{
+    flex-direction: column;
+   }
 
     @keyframes example {
         from {
@@ -187,9 +189,9 @@
         }
 
         #downloadwrap {
-            display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: row;
             height: 100vh;
             padding: 0 10px;
         }
@@ -297,6 +299,7 @@
                     });
                     document.querySelector("#go").style.display = "none";
                     document.querySelector("#textfn").style.display = "none";
+                    document.querySelector("#downloadwrap").style.display = "flex";
 
 
                 }
@@ -313,18 +316,24 @@
     }
     window.onresize = function () {
 
-        if (window.screen.availWidth > 600) {
+        if (window.screen.availWidth > 600||window.screen.width>600) {
+            if(document.querySelector("#canvas")!=null){
             document.querySelector("#canvas").setAttribute("width", Horizontalw);
             document.querySelector("#vid").setAttribute("width", Horizontalw);
 
             document.querySelector("#canvas").setAttribute("height", Horizontalh);
             document.querySelector("#vid").setAttribute("height", Horizontalh);
+            }
 
         } else {
+            if(document.querySelector("#canvas")!=null){
             document.querySelector("#canvas").setAttribute("width", straightw);
             document.querySelector("#vid").setAttribute("width", straightw);
+            }
 
         }
+
+      
 
     }
     window.onload = function () {
