@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -11,19 +12,22 @@
 </head>
 
 <body>
-    <div class="wrap" id="go">
-        <div id="app"></div>
-        <div class="container">
-            <img class="imgfn" src="./img/動物角色_VR_企鵝.png" alt="">
-            <img class="imgfn" src="./img/動物角色_VR_烏龜.png" alt="">
-            <img class="imgfn" src="./img/動物角色_VR_鯨魚.png" alt="">
+    <div class="mainwrap">
+        <div class="wrap" id="go">
+            <div id="app"></div>
+            <div class="container">
+                <img class="imgfn imgtrans" src="./img/動物角色_VR_企鵝.png" alt="">
+                <img class="imgfn imgtrans" src="./img/動物角色_VR_烏龜.png" alt="">
+                <img class="imgfns imgtrans" src="./img/動物角色_VR_鯨魚.png" alt="">
+            </div>
+
         </div>
-        <div>
+        <div class="btwrap">
             <img id="opencam" class="imgbt" src="./img/1791174.png" alt="" onclick="test()">
-            <img id="capture" class="imgbt" src="./img/capture.png" alt="" onclick="startcapture()" style="display:none">
+            <img id="capture" class="imgbt" src="./img/capture.png" alt="" onclick="startcapture()"
+                style="display:none">
         </div>
     </div>
-
     <div id="downloadwrap">
         <img id="downloadimg" class="imgbt" src="./img/downloading.png" onclick="download() " class="mid">
     </div>
@@ -33,21 +37,46 @@
 
 </body>
 <style>
+    .mainwrap {
+        display: flex;
+        flex-direction: column;
+    }
+
     .imgfn {
 
-        width: 100px;
-        height: 100px;
+        transition: transform 0.5s;
+
+        width: 33%;
+        height: 130px;
+    }
+
+
+    .adddown {
+        transform: translateY(10px);
+    }
+
+    .imgfns {
+        width: 33%;
+        height: 130px;
+        transition: transform 0.5s;
+    }
+
+    .btwrap {
+
+        width: 100%;
+        text-align: center;
+        padding: 5px;
     }
 
     .imgbt {
 
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
     }
 
     .wrap {
         width: 100%;
-        height: 100vh;
+        height: 85vh;
         display: flex;
         align-items: center;
 
@@ -55,9 +84,15 @@
 
     }
 
+    .wraprotate {
+        flex-direction: row-reverse;
+
+    }
+
     .container {
         display: flex;
         justify-content: center;
+
     }
 
     video {
@@ -66,30 +101,107 @@
 
     #app {
         height: 70vh;
+        padding-top: 80px;
         display: flex;
-        align-items: flex-end;
+        justify-content: center;
     }
 
     #textfn {
         font-size: 7rem;
-        top: 50%;
         position: fixed;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        display: none;
         color: #060681;
+        background-color: rgb(0 0 0 / 62%);
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
     }
 
     #downloadimg {
         margin: 0 auto;
         display: none;
+        padding: 10px;
     }
 
     #save {
+        width: 100% !important;
         height: 80vh !important;
+    }
+
+    #rotation {
+        position: absolute;
+        right: 30px;
+    }
+
+    .mainwrap {
+        position: relative;
+    }
+
+
+    @keyframes example {
+        from {
+            background-color: red;
+        }
+
+        to {
+            background-color: yellow;
+        }
+    }
+
+    @media screen and (min-width: 600px) {
+        .imgfn {
+
+            width: 80px;
+            height: 114px;
+        }
+
+        .btwrap {
+            width: 100%;
+            text-align: right;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 5px;
+        }
+
+        .imgfns {
+
+            width: 92px;
+            height: 114px;
+        }
+
+        #opencam {
+            transform: rotate(-90deg);
+        }
+
+        #app {
+            padding-top: 10px;
+            height: 60vh;
+        }
+
+        .wrap {
+            height: 95vh;
+        }
+
+        #downloadwrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 10px;
+        }
     }
 </style>
 <script>
 
+    let straighth = 300;
+    let straightw = 250;
+
+    let Horizontalh = 250;
+    let Horizontalw = 400;
     let videos = null;
     function test() {
 
@@ -126,11 +238,8 @@
                 videos = document.createElement("video");
                 videos.setAttribute("playsinline", "");
                 videos.id = id;
-                videos.width = 200;
-                videos.height = 200;
-                // video.autoplay = true;
-
-                //  video.controls = true;
+                videos.width = width;
+                videos.height = height;
                 return videos;
             };
 
@@ -143,8 +252,14 @@
             };
 
             const init = () => {
-                const video = createVideo("vid", 200, 200);
-                const canvas = createCanvas("canvas", 200, 200);
+                let h = straighth;
+                let w = straightw;
+                if (window.screen.availWidth > 600) {
+                    h = Horizontalh;
+                    w = Horizontalw;
+                }
+                const video = createVideo("vid", w, h);
+                const canvas = createCanvas("canvas", w, h);
                 const app = document.getElementById("app");
                 getCameraStream(video);
                 getFrameFromVideo(video, canvas);
@@ -157,10 +272,11 @@
         }
         videos.play();
         document.querySelector("#opencam").style.display = "none";
-        document.querySelector("#capture").style.display = "block";
+        document.querySelector("#capture").style.display = "inline";
     }
     function startcapture() {
         document.querySelector("#capture").style.display = "none";
+        document.querySelector("#textfn").style.display = "flex";
         let i = 3;
 
         let dp = function () {
@@ -195,6 +311,28 @@
         let image = document.querySelector("#save");
         Canvas2Image.saveAsPNG(image);
     }
+    window.onresize = function () {
+
+        if (window.screen.availWidth > 600) {
+            document.querySelector("#canvas").setAttribute("width", Horizontalw);
+            document.querySelector("#vid").setAttribute("width", Horizontalw);
+
+            document.querySelector("#canvas").setAttribute("height", Horizontalh);
+            document.querySelector("#vid").setAttribute("height", Horizontalh);
+
+        } else {
+            document.querySelector("#canvas").setAttribute("width", straightw);
+            document.querySelector("#vid").setAttribute("width", straightw);
+
+        }
+
+    }
+    window.onload = function () {
+        document.querySelectorAll(".imgtrans").forEach(e => {
+            e.classList.add("adddown");
+        })
+    }
+
 </script>
 
 </html>
