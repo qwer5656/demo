@@ -132,12 +132,14 @@
         let h = document.documentElement.clientHeight;
         let w = document.documentElement.clientWidth;
        
+            if (document.querySelector("#vid") != null) {
+                document.querySelector("#vid").setAttribute("width", w);
+                document.querySelector("#vid").setAttribute("height", h);
+            }
+
             if (document.querySelector("#canvas") != null) {
                 document.querySelector("#canvas").setAttribute("width", w);
-                document.querySelector("#vid").setAttribute("width", w);
-
                 document.querySelector("#canvas").setAttribute("height", h);
-                document.querySelector("#vid").setAttribute("height", h);
             }
 
 
@@ -169,6 +171,7 @@
 
 
         document.querySelector("#canvas").setAttribute("height", h);
+        document.querySelector("#load").style.display="block";
     }
   
 
