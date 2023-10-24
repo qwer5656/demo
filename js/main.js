@@ -141,7 +141,9 @@
             }
 
 
-
+            document.querySelector("#background").style.height=h + "px";
+            document.querySelector("#background").style.width=w + "px";
+            
 
     }
 
@@ -160,8 +162,10 @@
         document.querySelectorAll(".imgfns").forEach(e => {
             e.classList.add("addimgfnsdown");
         })
-
-        
+        let h = document.documentElement.clientHeight;
+        let w = document.documentElement.clientWidth;
+        document.querySelector("#background").style.height=h + "px";
+        document.querySelector("#background").style.width=w + "px";
     }
 
 
