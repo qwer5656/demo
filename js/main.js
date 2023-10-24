@@ -65,7 +65,7 @@
             };
 
             const createCanvas = (id, width, height) => {
-                const canvas = document.createElement("canvas");
+                const canvas = document.getElementById("canvas");
                 canvas.id = id;
                 canvas.width = width;
                 canvas.height = height;
@@ -82,7 +82,7 @@
                 getCameraStream(video);
                 getFrameFromVideo(video, canvas);
                 app.appendChild(video);
-                app.appendChild(canvas);
+                //app.appendChild(canvas);
                 console.log("init ");
             };
 
@@ -166,7 +166,10 @@
         let w = document.documentElement.clientWidth;
         document.querySelector("#background").style.height=h + "px";
         document.querySelector("#background").style.width=w + "px";
-    }
 
+
+        document.querySelector("#canvas").setAttribute("height", h);
+    }
+  
 
     

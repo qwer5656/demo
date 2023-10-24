@@ -22,13 +22,15 @@
                     
                 </div>         
                 <img id="background" style="position: absolute;" src="./img/imgs.png" alt="">
+                <div class="btwrap">
+                    <img id="opencam" class="imgbt" src="./img/1791174.png" alt="" onclick="test()">
+                    <img id="capture" class="imgbt" src="./img/capture.png" alt="" onclick="startcapture()"
+                        style="display:none">
+                </div>
+              <canvas id="canvas"></canvas>
         </div>
         </div>
-        <div class="btwrap">
-            <img id="opencam" class="imgbt" src="./img/1791174.png" alt="" onclick="test()">
-            <img id="capture" class="imgbt" src="./img/capture.png" alt="" onclick="startcapture()"
-                style="display:none">
-        </div>
+       
     </div>
     <div id="downloadwrap" style="display: none;">
         <img id="downloadimg" class="imgbt" src="./img/downloading.png" onclick="download() " class="mid">
