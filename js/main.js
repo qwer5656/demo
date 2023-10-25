@@ -33,7 +33,7 @@ function test() {
         constraints = {
             audio: false,
             video: {
-                facingMode: "environment"
+                facingMode: "left"
             }
         };
 
