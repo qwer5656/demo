@@ -111,8 +111,8 @@ function startcapture() {
                     document.querySelector("#downloadwrap").prepend(canvas);
 
                     document.querySelector("#downloadimg").style.display = "block";
-                    console.log(canvas.width);
                 });
+                
                 document.querySelector("#go").style.display = "none";
                 document.querySelector("#textfn").style.display = "none";
                 document.querySelector("#downloadwrap").style.display = "flex";
@@ -128,7 +128,7 @@ function download() {
 
     var link = document.createElement('a');
     link.download = 'selfie.png';
-    link.href = document.querySelector('#save').toDataURL("image/png");
+    link.href = document.querySelector('#save').toDataURL();
     link.click();
 }
 window.onresize = function () {
