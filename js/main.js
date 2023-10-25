@@ -44,14 +44,10 @@ function test() {
 
             let h = document.documentElement.clientHeight;
             let w = document.documentElement.clientWidth;
-            if (h < w) {
-                ctx.translate(0, 0);
-                ctx.scale(1, 1);
-            }
-            else {
-                ctx.translate(video.width, 0);
-                ctx.scale(-1, 1);
-            }
+
+            ctx.translate(0, 0);
+            ctx.scale(1, 1);
+
             ctx.drawImage(video, 0, 0, video.width, video.height);
             ctx.restore();
             requestAnimationFrame(() => getFrameFromVideo(video, canvas));
