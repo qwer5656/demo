@@ -8,9 +8,10 @@ let Horizontalw = 600;
 let videos = null;
 
 
+let constraints;
 function changemode() {
 
-    const constraints = {
+    constraints = {
         audio: false,
         video: {
             facingMode: "environment"
@@ -29,10 +30,10 @@ function test() {
     if (videos == null) {
 
 
-        const constraints = {
+        constraints = {
             audio: false,
             video: {
-                facingMode: "user"
+                facingMode: "environment"
             }
         };
 
@@ -111,8 +112,8 @@ function startcapture() {
                     document.querySelector("#downloadwrap").prepend(canvas);
 
                     document.querySelector("#downloadimg").style.display = "block";
+                    console.log(canvas.width);
                 });
-                
                 document.querySelector("#go").style.display = "none";
                 document.querySelector("#textfn").style.display = "none";
                 document.querySelector("#downloadwrap").style.display = "flex";
@@ -125,11 +126,10 @@ function startcapture() {
 }
 
 function download() {
+    let image = document.querySelector("#save");
 
-    var link = document.createElement('a');
-    link.download = 'selfie.png';
-    link.href = document.querySelector('#save').toDataURL();
-    link.click();
+    console.log(image);
+    Canvas2Image.saveAsPNG(image, image.width, image.height, "pic");
 }
 window.onresize = function () {
     let h = document.documentElement.clientHeight;
@@ -151,7 +151,6 @@ window.onresize = function () {
 
 
 }
-
 
 
 
