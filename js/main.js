@@ -33,7 +33,7 @@ function test() {
         constraints = {
             audio: false,
             video: {
-                facingMode: "left"
+                facingMode: "environment"
             }
         };
 
@@ -41,8 +41,17 @@ function test() {
             const ctx = canvas.getContext("2d");
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.save();
-            ctx.translate(video.width, 0);
-            ctx.scale(-1, 1);
+
+            let h = document.documentElement.clientHeight;
+            let w = document.documentElement.clientWidth;
+            if (h < w) {
+                ctx.scale(1, -1);
+                ctx.translate(0, -video.height);
+            }
+            else {
+                ctx.translate(video.width, 0);
+                ctx.scale(-1, 1);
+            }
             ctx.drawImage(video, 0, 0, video.width, video.height);
             ctx.restore();
             requestAnimationFrame(() => getFrameFromVideo(video, canvas));
