@@ -45,8 +45,8 @@ function test() {
             let h = document.documentElement.clientHeight;
             let w = document.documentElement.clientWidth;
             if (h < w) {
-                ctx.scale(1, -1);
-                ctx.translate(0, -video.height);
+                ctx.translate(0, 0);
+                ctx.scale(1, 1);
             }
             else {
                 ctx.translate(video.width, 0);
