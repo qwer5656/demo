@@ -125,10 +125,11 @@ function startcapture() {
 }
 
 function download() {
-    let image = document.querySelector("#save");
 
-    console.log(image);
-    Canvas2Image.saveAsPNG(image, image.width, image.height, "pic");
+    var link = document.createElement('a');
+    link.download = 'selfie.png';
+    link.href = document.querySelector('#save').toDataURL("image/png");
+    link.click();
 }
 window.onresize = function () {
     let h = document.documentElement.clientHeight;
