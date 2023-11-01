@@ -92,8 +92,8 @@ function test() {
 
             else if (w > h) {
 
-                let newh = h / 3;
-                w = newh * 4;
+                let newh = h / 9;
+                w = newh * 16;
             }
 
 
@@ -169,8 +169,8 @@ window.onresize = function () {
 
     else if (w > h) {
 
-        let newh = h / 3;
-        w = newh * 4;
+        let newh = h / 9;
+        w = newh * 16;
     }
 
 
