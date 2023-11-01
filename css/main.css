@@ -23,21 +23,26 @@
 .penguin {
     width: 75px;
     height: 100px;
+    position: absolute;
+    left: 0px;
+    bottom: 30px;
     
 }
 
 .turtle {
     width: 75px;
     height: 100px;
-    padding-right: 20px;
-    padding-left: 20px;
+    bottom: -3px;
+    position: absolute;
+    left: 58px;
 }
 
 .imgfns {
+    bottom: 5px;
+    right: 20px;
     width: 100px;
     height: 81px;
- 
-    
+    position: absolute;
 }
 
 .btwrap {
@@ -81,7 +86,6 @@ video {
 #app {
     vertical-align: bottom;
     position: relative;
-    width: 100%;
     display: flex;
     justify-content: center;
    
@@ -109,8 +113,7 @@ video {
 }
 
 #save {
-    width: 100% !important;
-    height: 80vh !important;
+    
 }
 
 #rotation {
@@ -135,14 +138,13 @@ video {
 
 .imgcontent {
     position: absolute;
-    bottom: 80px;
+    bottom: 0px;
     left: 50%;
-    width: 300px;
+    width: 100%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left:31px;
     z-index: 10;
 }
 
@@ -166,7 +168,7 @@ html.noscroll {
     }
 
     .imgcontent{
-        bottom: 20px;
+        
     }
     #downloadwrap {
         justify-content: center;
