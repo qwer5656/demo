@@ -41,10 +41,6 @@ function test() {
             const ctx = canvas.getContext("2d");
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.save();
-
-            let h = document.documentElement.clientHeight;
-            let w = document.documentElement.clientWidth;
-
             ctx.translate(0, 0);
             ctx.scale(1, 1);
 
@@ -82,6 +78,25 @@ function test() {
             let h = document.documentElement.clientHeight;
             let w = document.documentElement.clientWidth;
 
+
+
+            if (h > w) {
+
+                let neww = w / 4;
+                h = neww * 5;
+            }
+        
+        
+            else if (w > h) {
+        
+               let newh=h/3;
+               w=newh*4;
+            }
+        
+
+            document.querySelector("#go").style.width=document.documentElement.clientWidth+"px";
+            document.querySelector("#go").style.height=document.documentElement.clientHeight+"px";
+            document.querySelector("#go").style.backgroundColor="black";
             const video = createVideo("vid", w, h);
             const canvas = createCanvas("canvas", w, h);
             const app = document.getElementById("go");
@@ -140,19 +155,40 @@ window.onresize = function () {
     let h = document.documentElement.clientHeight;
     let w = document.documentElement.clientWidth;
 
-    if (document.querySelector("#vid") != null) {
-        document.querySelector("#vid").setAttribute("width", w);
-        document.querySelector("#vid").setAttribute("height", h);
+
+
+    if (h > w) {
+
+        let neww = w / 4;
+        h = neww * 5;
     }
 
-    if (document.querySelector("#canvas") != null) {
+
+    else if (w > h) {
+
+       let newh=h/3;
+       w=newh*4;
+    }
+
+
+    console.log(h, w);
+
+    if (document.querySelector("#vid") != null) {
+        
+    document.querySelector("#go").style.width=document.documentElement.clientWidth+"px";
+    document.querySelector("#go").style.height=document.documentElement.clientHeight+"px";
+        document.querySelector("#vid").setAttribute("width", w);
+        document.querySelector("#vid").setAttribute("height", h);
+
         document.querySelector("#canvas").setAttribute("width", w);
         document.querySelector("#canvas").setAttribute("height", h);
     }
+    else{
 
+        document.querySelector("#canvas").setAttribute("width", document.documentElement.clientWidth);
+        document.querySelector("#canvas").setAttribute("height", document.documentElement.clientHeight);
 
-    document.querySelector("#background").style.height = h + "px";
-    document.querySelector("#background").style.width = w + "px";
+    }
 
 
 }
