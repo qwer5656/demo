@@ -178,8 +178,6 @@ window.onresize = function () {
 
     if (document.querySelector("#vid") != null) {
 
-        document.querySelector("#go").style.width = document.documentElement.clientWidth + "px";
-        document.querySelector("#go").style.height = document.documentElement.clientHeight + "px";
         document.querySelector("#vid").setAttribute("width", w);
         document.querySelector("#vid").setAttribute("height", h);
 
@@ -188,10 +186,15 @@ window.onresize = function () {
     }
     else {
 
-        document.querySelector("#canvas").setAttribute("width", document.documentElement.clientWidth);
-        document.querySelector("#canvas").setAttribute("height", document.documentElement.clientHeight);
+
+
+
+        document.querySelector("#canvas").setAttribute("width", w);
+        document.querySelector("#canvas").setAttribute("height", h);
 
     }
+    document.querySelector("#go").style.width = document.documentElement.clientWidth + "px";
+    document.querySelector("#go").style.height = document.documentElement.clientHeight + "px";
 
 
 }
@@ -212,6 +215,22 @@ window.onload = function () {
     })
     let h = document.documentElement.clientHeight;
     let w = document.documentElement.clientWidth;
+
+    if (h > w) {
+
+        let neww = w / 4;
+        h = neww * 5;
+    }
+
+
+    else if (w > h) {
+
+        let newh = h / 3;
+        w = newh * 4;
+    }
+
+    document.querySelector("#go").style.width = document.documentElement.clientWidth + "px";
+    document.querySelector("#go").style.height = document.documentElement.clientHeight + "px";
     document.querySelector("#background").style.height = h + "px";
     document.querySelector("#background").style.width = w + "px";
 
