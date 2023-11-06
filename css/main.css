@@ -21,27 +21,27 @@
 }
 
 .penguin {
-    width: 75px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     position: absolute;
-    left: 0px;
+    left: -18px;
     bottom: 30px;
     
 }
 
 .turtle {
-    width: 75px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     bottom: -3px;
     position: absolute;
-    left: 58px;
+    left: 40px;
 }
 
 .imgfns {
-    bottom: 5px;
-    right: 20px;
-    width: 100px;
-    height: 81px;
+    bottom: 20px;
+    right: 0px;
+    width: 120px;
+    height:72px;
     position: absolute;
 }
 
